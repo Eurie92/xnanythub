@@ -1,4 +1,5 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
+
 local Window = redzlib:MakeWindow({
   Title = "xnanyt Hub : Blox Fruits",
   SubTitle = "by xxxnanyt",
@@ -15,6 +16,7 @@ Discord:AddDiscordInvite({
   Logo = "rbxassetid://15298567397",
   Invite = "https://discord.gg/7aR7kNVt4g"
 })
+
 local MainFarm = Window:MakeTab({"Farm", "Home"})
 if Sea3 then
   local AutoSea = Window:MakeTab({"Sea", "Waves"})
