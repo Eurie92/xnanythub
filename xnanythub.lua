@@ -1,10 +1,12 @@
+if game.PlaceId == 2753915549 then 
+  local CurrentVersion = "HIIIII GUYS"
+
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 
 local Window = redzlib:MakeWindow({
   Title = "xnanyt Hub : Blox Fruits",
   SubTitle = "by xxxnanyt",
   SaveFolder = ""
-  BackgroundTransparency = 0.5
 })
 
 local AFKOptions = {}
@@ -25,6 +27,7 @@ if Sea3 then
   AutoSea:AddToggle({Name = "Auto Kitsune Island",Callback = function(Value)
     getgenv().AutoKitsuneIsland = Value;AutoKitsuneIsland()
   end})
+
   AutoSea:AddToggle({Name = "Auto Trade Azure Ember",Callback = function(Value)
     getgenv().TradeAzureEmber = Value
     task.spawn(function()
@@ -37,6 +40,7 @@ if Sea3 then
       end
     end)
   end})
+
   task.spawn(function()
     local Map = workspace:WaitForChild("Map", 9e9)
     task.spawn(function()
@@ -731,7 +735,7 @@ MainFarm:AddSlider({
   Name = "Select Health",
   Min = 10,
   Max = 100,
-  Default = 25,
+  Default = 15,
   Callback = function(Value)
     getgenv().HealthSkill = Value
   end
@@ -2801,3 +2805,5 @@ task.spawn(function()
   hookfunction(error, function()end)
   hookfunction(warn, function()end)
 end)
+
+end
