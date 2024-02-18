@@ -60,24 +60,33 @@ local function copyToClipboard(text)
     end
 end
 
+-- Function to show a notification
+local function showNotification(title, content, image, time)
+    OrionLib:MakeNotification({
+        Name = title,
+        Content = content,
+        Image = image,
+        Time = time
+    })
+end
+
+-- Assuming Main2 is defined in your original code
 Main2:AddButton({
     Name = "Banana Hub",
     Callback = function()
         -- Discord link to be copied
-        local discordLink = "https://discord.gg/UBFh9Cp3"
+        local discordLink = "https://discord.gg/example"
 
         -- Copy the Discord link to the clipboard
         copyToClipboard(discordLink)
 
-        -- Display success message in GUI
-        local successLabel = Instance.new("TextLabel")
-        successLabel.Text = "You successfully copied the Discord link!"
-        successLabel.Parent = Main2 -- Make sure to set the parent to your GUI
-
-        -- Optional: Remove the success message after a certain time
-        wait(5)
-        successLabel:Destroy()
+        -- Show notification
+        showNotification("Title!", "Notification content... what will it say??", "rbxassetid://4483345998", 5)
     end
 })
 
+
 OrionLib:Init()
+
+
+
