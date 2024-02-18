@@ -52,17 +52,8 @@ local MainSection = Main2:AddSection({
 })
 
 
-local function showNotification(title, content, image, time)
-    OrionLib:MakeNotification({
-        Name = title,
-        Content = content,
-        Image = image,
-        Time = time
-    })
-end
-
 Main2:AddButton({
-    Name = "anana Hub",
+    Name = "Banana Hub",
     Callback = function()
         -- Discord link to be copied
         local discordLink = "https://discord.gg/example"
@@ -77,11 +68,9 @@ Main2:AddButton({
                         if not game:GetService("RunService"):IsStudio() then
                             pcall(function()
                                 game:GetService("HttpService"):SetClipboard(discordLink)
+                                print("Copied to clipboard:", discordLink)
                             end)
                         end
-
-                        -- Show notification
-                        showNotification("Title!", "Notification content... what will it say??", "rbxassetid://4483345998", 5)
                     end
                 end
             end)
