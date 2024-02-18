@@ -52,15 +52,6 @@ local MainSection = Main2:AddSection({
 })
 
 
-local function copyToClipboard(text)
-    if game:GetService("RunService"):IsStudio() then
-        print("Copied to clipboard:", text)
-    else
-        game:GetService("ClipboardService"):Set("String", text)
-    end
-end
-
--- Function to show a notification
 local function showNotification(title, content, image, time)
     OrionLib:MakeNotification({
         Name = title,
@@ -70,21 +61,33 @@ local function showNotification(title, content, image, time)
     })
 end
 
--- Assuming Main2 is defined in your original code
 Main2:AddButton({
-    Name = "Banana Hub",
+    Name = "anana Hub",
     Callback = function()
         -- Discord link to be copied
         local discordLink = "https://discord.gg/example"
 
-        -- Copy the Discord link to the clipboard
-        copyToClipboard(discordLink)
+        -- Attempt to copy the Discord link to the clipboard
+        pcall(function()
+            local UserInputService = game:GetService("UserInputService")
+            UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+                if not gameProcessedEvent then
+                    if input.KeyCode == Enum.KeyCode.LeftControl and input.KeyCode == Enum.KeyCode.C then
+                        -- Copy to clipboard
+                        if not game:GetService("RunService"):IsStudio() then
+                            pcall(function()
+                                game:GetService("HttpService"):SetClipboard(discordLink)
+                            end)
+                        end
 
-        -- Show notification
-        showNotification("Title!", "Notification content... what will it say??", "rbxassetid://4483345998", 5)
+                        -- Show notification
+                        showNotification("Title!", "Notification content... what will it say??", "rbxassetid://4483345998", 5)
+                    end
+                end
+            end)
+        end)
     end
 })
-
 
 OrionLib:Init()
 
