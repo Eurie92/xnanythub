@@ -51,7 +51,6 @@ local MainSection = Main2:AddSection({
 
 })
 
-
 Main2:AddButton({
     Name = "Banana Hub",
     Callback = function()
@@ -60,20 +59,10 @@ Main2:AddButton({
 
         -- Attempt to copy the Discord link to the clipboard
         pcall(function()
-            local UserInputService = game:GetService("UserInputService")
-            UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
-                if not gameProcessedEvent then
-                    if input.KeyCode == Enum.KeyCode.LeftControl and input.KeyCode == Enum.KeyCode.C then
-                        -- Copy to clipboard
-                        if not game:GetService("RunService"):IsStudio() then
-                            pcall(function()
-                                game:GetService("HttpService"):SetClipboard(discordLink)
-                                print("Copied to clipboard:", discordLink)
-                            end)
-                        end
-                    end
-                end
-            end)
+            if not game:GetService("RunService"):IsStudio() then
+                game:GetService("HttpService"):SetClipboard(discordLink)
+                print("Copied to clipboard:", discordLink)
+            end
         end)
     end
 })
